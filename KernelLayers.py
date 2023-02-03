@@ -63,6 +63,11 @@ class KernelLinear(KernelLayerBase):
         self.register_forward_pre_hook(self._forward_pre_hook)
         self.register_full_backward_hook(self._backward_hook)
 
+    def extra_repr(self) -> str:
+        return 'num_kernels={}, in_features={}, out_features={}'.format(
+            self.w.shape[0], self.in_features, self.out_features
+        )
+
     def _forward_pre_hook(self, module, inp):
         # print(module, inp)
         self.forward_entries.append(inp[0])
