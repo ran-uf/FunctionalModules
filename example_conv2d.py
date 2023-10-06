@@ -9,8 +9,8 @@ from test_linear import MyDense
 class Net(KernelModule):
     def __init__(self):
         super().__init__()
-        # self.conv1 = KernelConv2D(3, 6, (5, 5))
-        self.conv1 = torch.nn.Conv2d(3, 32, (3, 3))
+        self.conv1 = KernelConv2D(3, 6, (5, 5))
+        # self.conv1 = torch.nn.Conv2d(3, 32, (3, 3))
         self.pool1 = torch.nn.MaxPool2d(2, 2)
         self.conv2 = torch.nn.Conv2d(32, 64, (3, 3))
         self.pool2 = torch.nn.MaxPool2d(2, 2)
@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     criterion = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-    # kernel_optimizer = KernelOptimizer(net.kernel_parameters(), lr=0.01, quantization=0.1)
+    kernel_optimizer = KernelOptimizer(net.kernel_parameters(), lr=0.01, quantization=0.1)
 
     for epoch in range(20):  # loop over the dataset multiple times
         running_loss = 0.0
@@ -63,13 +63,13 @@ if __name__ == "__main__":
 
             # zero the parameter gradients
             optimizer.zero_grad()
-            # kernel_optimizer.zero_grad()
+            kernel_optimizer.zero_grad()
             # forward + backward + optimize
             outputs = net(inputs)
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
-            # kernel_optimizer.step()
+            kernel_optimizer.step()
 
             # print statistics
             running_loss += loss.item()
