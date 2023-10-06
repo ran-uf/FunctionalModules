@@ -1,6 +1,10 @@
 # Functional Layers
 An implementation of functional weights in RKHS for the paper "The Extended Kernel Adaptive Autoregressive-Moving-Average Algorithm" (IJCNN22).
 
+## Usage
+
+Functional weights can only be updated by KernelOptimizer. Same usage as torch modules. Details in exampel_conv2d.py.
+
 ## Cite
 
 [EKAARMA paper](https://arxiv.org/abs/2210.04468):
