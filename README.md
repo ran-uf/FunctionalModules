@@ -1,5 +1,5 @@
 # Functional Layers
-An implementation of functional weights in RKHS for the paper "The Extended Kernel Adaptive Autoregressive-Moving-Average Algorithm" (IJCNN22).
+An implementation of functional weights in RKHS for the paper "The Extended Kernel Adaptive Autoregressive-Moving-Average Algorithm" (IJCNN22). Functional Conv2d added. 
 
 ## Usage
 
